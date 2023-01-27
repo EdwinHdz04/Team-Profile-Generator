@@ -10,11 +10,6 @@ let team = []
 
 
 
-
-
-
-
-
 function createFile(src,data){
     fs.writeFile("./src/barebones.html", htmlPageContent, (err)=> {
         err ? console.log(err): console.log("Successfully created index.html!")
@@ -53,7 +48,7 @@ const makeemployee = () =>{
     }  
 }) 
 }
-//This function will make the Enginer
+//This function will make the Engineer
 
  const makeEngineer = () =>{
     inquirer.prompt([
