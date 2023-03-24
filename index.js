@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require('fs/promises');
 const generateHTML = require('./src/generateHTML');
-const Employee = require('./lib/Employee'); 
+
 const Engineer = require('./lib/Engineer'); 
 const Intern = require('./lib/Intern'); 
 const Manager = require('./lib/Manager'); 
@@ -17,19 +17,19 @@ function createFile(src,data){
 }
 
 // This will initialize the prompt function 
-const makeemployee = () =>{
+const makeEmployee = () =>{
     inquirer
   .prompt([
     {
       type: 'list',
-      name: 'makeemployee',
+      name: 'makeEmployee',
       message: 'What type of employee do you want to create?',
       choices: ['Engineer','Intern','Manager','None'],
     }
 
 ])
 .then(answers => {
-    switch (answers.makeemployee) {
+    switch (answers.makeEmployee) {
         case "Engineer" : 
         makeEngineer();
         break;
@@ -75,8 +75,8 @@ const makeemployee = () =>{
         }  
     ]).then(answers =>{
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.EngineerGithub)
-        employee.push(engineer);
-        makeemployee()   
+        team.push(engineer);
+        makeEmployee()   
     })
 }
 //This function will make the Intern
@@ -105,8 +105,8 @@ const makeIntern = () =>{
         }  
     ]).then(answers =>{
         const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internGithub)
-        employee.push(intern);
-        makeemployee()   
+        team.push(intern);
+        makeEmployee()   
     })
 }
 //This function will make the Manager
@@ -135,9 +135,9 @@ const makeManager = () =>{
         }  
     ]).then(answers =>{
         const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber)
-        employee.push(manager);
-        makeemployee()   
+        team.push(manager);
+        makeEmployee()   
     }); 
 }
 
- makeemployee()      
+ makeEmployee()      
